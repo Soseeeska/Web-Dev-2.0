@@ -62,29 +62,44 @@
         </div>
     </section>
 
-    <section id="portfolio">
+    <section  class="portfolio">
         <h2>Portfolio</h2>
         <div class="portfolio-item">
             <h3>Dashboard</h3>
-            <img src="path/to/testimonial/photo.jpg" alt="Client Photo">
+            <div class="flex-container">
+                <img src="/assets/portfolio1.jpg" type="img" alt="Dashboard" class="center">
+                <li class="right">Hello</li>
+            </div>
+                <canvas id="myChart1" ></canvas>
             <a href="github-link" target="_blank">GitHub</a>
             <a href="demo-link" target="_blank">Demo</a>
         </div>
         <div class="portfolio-item">
             <h3>Chart Templates</h3>
+            <div class="flex-container">
+                <img src="/assets/portfolio5.png" type="img" alt="Chart" class="center">
+                <li class="right">Hello</li>
+            </div>
+            <canvas id="myChart2"></canvas>
             <a href="github-link" target="_blank">GitHub</a>
             <a href="demo-link" target="_blank">Demo</a>
         </div>
         <div class="portfolio-item">
             <h3>Figma Dashboard</h3>
+            <div class="flex-container">
+                <img src="/assets/portfolio6.jpg" type="img" alt="Figma" class="center">
+                <li class="right">Hello</li>
+            </div>
+            <canvas id="myChart3"></canvas>
             <a href="github-link" target="_blank">GitHub</a>
             <a href="demo-link" target="_blank">Demo</a>
         </div>
     </section>
 
     <section id="testimonials">
+        <div id="testimonials"></div>
         <h2>Testimonials</h2>
-        <div class="testimonial-item">
+        <div id ="testimonials" class="testimonial-item">
             <img src="path/to/testimonial/photo.jpg" alt="Client Photo">
             <h3>Client Name</h3>
             <p>Testimonial text...</p>
@@ -93,21 +108,133 @@
 
     <section id="contact">
         <h2>Contact Me</h2>
-        <div class="contact-methods">
-            <div>Email</div>
-            <div>Messenger</div>
-            <div>WhatsApp</div>
+        
+       
+        <div class="flex-containerContact">
+            <div class="containerContactMe">
+                <div class="contact-methods">
+                    <img src="/assets/phone.png" width="40" height="40" alt="ContactPhoto">
+                     <p class="bold-text">WhatsApp<br>+2044920402</p>
+                </div>
+                <div class="contact-methods">
+                     <img src="/assets/circle.png" width="50" height="50" alt="ContactPhoto">
+                     <p>Location<br>Kalin str. 14, Cologne, Germany </p>
+
+                </div>
+            </div>
+            
+            <form action="/send-email" method="post" class="ContactForm">
+                <input class="input" type="text" name="fullname" placeholder="Full Name" required>
+                <input class="input" type="email" name="email" placeholder="E-mail" required>
+                <input class="input" name="message" placeholder="Message" required>
+                <div>            
+                    <button type="submitclick">Send Message</button>
+                    
+                </div>
+            </form>
         </div>
-        <form action="/send-email" method="post">
-            <input type="text" name="fullname" placeholder="Full Name" required>
-            <input type="email" name="email" placeholder="E-mail" required>
-            <textarea name="message" placeholder="Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
+        
+        <button id="toTopBtn" title="Go to top">Top</button>
     </section>
 
-    <button id="toTopBtn" class="to-top-button"><i class="fas fa-chevron-up"></i></button>
+    
 
     <script src="/js.js" type="text/js"></script>
+    <script src="/Testimonials.js" type="text/js"></script>
+
+    <!--for creating line chart for dashboard project using chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const chart1 = document.getElementById('myChart1');
+    new Chart(chart1, {
+      type: 'line',
+      data: {
+        labels: ['March', 'April', 'May', 'June', 'July', 'August'],
+        datasets: [{
+          label: '# of Downloads',
+          data: [20, 25, 46, 31, 56, 12],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        },
+      },
+    });
+    </script>
+    <script>
+        const chart2 = document.getElementById('myChart2');
+    
+    new Chart(chart2, {
+      type: 'line',
+      data: {
+        labels: ['March', 'April', 'May', 'June', 'July', 'August'],
+        datasets: [{
+          label: '# of Downloads',
+          data: [20, 25, 46, 31, 56, 12],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+    </script>
+    <script>
+        const chart3 = document.getElementById('myChart3');
+    
+    new Chart(chart3, {
+      type: 'line',
+      data: {
+        labels: ['March', 'April', 'May', 'June', 'July', 'August'],
+        datasets: [{
+          label: '# of Downloads',
+          data: [20, 25, 46, 31, 56, 12],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+    </script>
+    <script>
+    // Get the button
+    let toTopBtn = document.getElementById("toTopBtn");
+
+    // When you scroll down 20px from the top, it shows the button
+    window.onscroll = function() {
+        scrollFunction();
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            toTopBtn.style.display = "block";
+        } else {
+            toTopBtn.style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    toTopBtn.onclick = function() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    };
+    </script>
+
 </body>
 </html>
