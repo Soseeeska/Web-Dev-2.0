@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" type="text/css" href="public/styles.css">
+    <style>
+        @import url('http://localhost/devsitev2.0/public/grid base.css');
+        @import url('http://localhost/devsitev2.0/public/grid.css');
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hello, I am <span class="name">Name</span></h1>
+    </header>
+
+    <section id="about">
+        <div class="photo">
+            <img src="http://localhost/devsitev2.0/public/assets/testimonialsPhoto/1.jpeg" alt="Your Photo">
+        </div>
+        <div class="about-details">
+            <div class="info-box">
+                <h2>Experience</h2>
+                <p>3+ Years Working</p>
+            </div>
+            <div class="info-box">
+                <h2>Clients</h2>
+                <p>200+ Worldwide</p>
+            </div>
+            <div class="info-box">
+                <h2>Projects</h2>     
+                <p>80+ Completed</p>
+            </div>
+            <p class="about-text">No work goes unnoticed. Each work presented in the portfolio is the result of long studies and efforts. If, after reviewing this business card site, you have any suggestions or questions, do not hesitate to write to me.</p>
+            <button class="contact-button">Let's Talk</button>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>My Experience</h2>
+        <div class="container-grid">
+            <div class="experience-box card">
+                <h3 >Frontend Development</h3>
+                <ul >
+                    <li>Skill 1</li>
+                    <li>Skill 2</li>
+                    <li>Skill 3</li>
+                   
+                    
+                </ul>
+            </div>
+            <div class="experience-box card">
+                <h3>Backend Development</h3>
+                <ul>
+                    <li>Skill 1</li>
+                    <li>Skill 2</li>
+                    <li>Skill 3</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section  class="portfolio">
+        <h2>Portfolio</h2>
+        <div class="portfolio-item">
+            <h3>Dashboard</h3>
+            <div class="flex-container">
+                <img src="http://localhost/devsitev2.0/public/assets/portfolio1.jpg" type="img" alt="Dashboard" class="center">
+                <li class="right">Hello</li>
+            </div>
+                <canvas id="myChart1" ></canvas>
+                <button class="contact-button" href="github-link" target="_blank">GitHub</button>
+                <button class="contact-button" href="demo-link" target="_blank">Demo</button>
+        </div>
+        <div class="portfolio-item">
+            <h3>Chart Templates</h3>
+            <div class="flex-container">
+                <img src="http://localhost/devsitev2.0/public/assets/portfolio5.png" type="img" alt="Chart" class="center">
+                <li class="right">Hello</li>
+            </div>
+            <canvas id="myChart2"></canvas>
+            <button class="contact-button" href="github-link" target="_blank">GitHub</button>
+            <button class="contact-button" href="demo-link" target="_blank">Demo</button>
+        </div>
+        <div class="portfolio-item">
+            <h3>Figma Dashboard</h3>
+            <div class="flex-container">
+                <img src="http://localhost/devsitev2.0/public/assets/portfolio4.jpg" type="img" alt="Figma" class="center">
+                <li class="right">Hello</li>
+            </div>
+            <canvas id="myChart3"></canvas>
+            <button class="contact-button" href="github-link" target="_blank">GitHub</button>
+            <button class="contact-button" href="demo-link" target="_blank">Demo</button>
+            
+        </div>
+    </section>
+
+    <section id="testimonial">
+        <h2>Testimonials</h2>
+        <div class="scroller" data-direction="left" data-speed="slow">
+            <div id="testimonial-container" class="scroller__inner">
+                <!-- Testimonials dynamically loaded here -->
+                
+                
+            </div>
+        </div>
+       
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        
+       
+        <div class="flex-containerContact">
+            <div class="containerContactMe">
+                <div class="contact-methods">
+                    <img src="http://localhost/devsitev2.0/public/assets/phone.png" width="40" height="40" alt="ContactPhoto">
+                     <p class="bold-text">WhatsApp<br>+2044920402</p>
+                </div>
+                <div class="contact-methods">
+                     <img src="http://localhost/devsitev2.0/public/assets/circle.png" width="50" height="50" alt="ContactPhoto">
+                     <p>Location<br>Kalin str. 14, Cologne, Germany </p>
+
+                </div>
+            </div>
+            
+            <form action="/send-email" method="post"  class="ContactForm">
+                <input class="input" type="text" name="fullname" placeholder="Full Name" required>
+                <input class="input" type="email" name="email" placeholder="E-mail" required>
+                <input class="input" name="message" placeholder="Message" required>
+                <div>            
+                    <button type="submitclick">Send Message</button>
+                    
+                </div>
+            </form>
+        </div>
+        
+        <button id="toTopBtn" title="Go to top">Top</button>
+    </section>
+
+    
+
+    <script src="/js.js" type="text/js"></script>
+
+
+    <!--for creating line chart for dashboard project using chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const chart1 = document.getElementById('myChart1');
+        new Chart(chart1, {
+          type: 'line',
+          data: {
+            labels: ['March', 'April', 'May', 'June', 'July', 'August'],
+            datasets: [{
+              label: '# of Downloads',
+              data: [20, 25, 46, 31, 56, 12],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              x: {
+                grid: {
+                  color: 'rgba(75, 192, 192, 0.2)',  
+                }
+              },
+              y: {
+                beginAtZero: true,
+                grid: {
+                  color: 'rgba(153, 102, 255, 0.2)',  
+                }
+              }
+            },
+          },
+        });
+    </script>
+    
+    <script>
+        const chart2 = document.getElementById('myChart2');
+    
+    new Chart(chart2, {
+      type: 'line',
+      data: {
+        labels: ['March', 'April', 'May', 'June', 'July', 'August'],
+        datasets: [{
+          label: '# of Downloads',
+          data: [3, 13, 24, 56, 52, 67],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+              x: {
+                grid: {
+                  color: 'rgba(75, 192, 192, 0.2)',  
+                }
+              },
+              y: {
+                beginAtZero: true,
+                grid: {
+                  color: 'rgba(153, 102, 255, 0.2)',  
+                }
+              }
+            },
+          },
+        });
+    </script>
+    <script>
+        const chart3 = document.getElementById('myChart3');
+    
+    new Chart(chart3, {
+      type: 'line',
+      data: {
+        labels: ['March', 'April', 'May', 'June', 'July', 'August'],
+        datasets: [{
+          label: '# of Downloads',
+          data: [34, 33, 12, 31, 87, 12],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+              x: {
+                grid: {
+                  color: 'rgba(75, 192, 192, 0.2)',  
+                }
+              },
+              y: {
+                beginAtZero: true,
+                grid: {
+                  color: 'rgba(153, 102, 255, 0.2)',  
+                }
+              }
+            },
+          },
+        });
+    </script>
+    <script>
+    // Get the button
+    let toTopBtn = document.getElementById("toTopBtn");
+
+    // When you scroll down 20px from the top, it shows the button
+    window.onscroll = function() {
+        scrollFunction();
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            toTopBtn.style.display = "block";
+        } else {
+            toTopBtn.style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    toTopBtn.onclick = function() {
+        document.body.scrollTop = 0; 
+        document.documentElement.scrollTop = 0; 
+    };
+    </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        fetch('http://localhost/devsitev2.0/fetch_testimonials.php')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('testimonial-container');
+                data.forEach(testimonial => {
+                    const testimonialItem = document.createElement('div');
+                    testimonialItem.classList.add('testimonialItem');
+    
+                    const img = document.createElement('img');
+                    img.src = testimonial.image;
+                    img.alt = 'Client Photo';
+                    img.classList.add('circular-image');
+                    testimonialItem.appendChild(img);
+    
+                    const name = document.createElement('h3');
+                    name.textContent = testimonial.name;
+                    testimonialItem.appendChild(name);
+    
+                    const content = document.createElement('p');
+                    content.textContent = testimonial.content;
+                    testimonialItem.appendChild(content);
+    
+                    container.appendChild(testimonialItem);
+                });
+                addAnimation();  // Call the addAnimation function after loading testimonials
+            })
+            .catch(error => console.error('Error fetching testimonials:', error));
+    });
+    
+    const scrollers = document.querySelectorAll(".scroller");
+    
+    function addAnimation() {
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            scrollers.forEach((scroller) => {
+                scroller.setAttribute("data-animated", true);
+    
+                const scrollerInner = scroller.querySelector(".scroller__inner");
+                const scrollerContent = Array.from(scrollerInner.children);
+    
+                scrollerContent.forEach((item) => {
+                    const duplicatedItem = item.cloneNode(true);
+                    duplicatedItem.setAttribute("aria-hidden", true);
+                    scrollerInner.appendChild(duplicatedItem);
+                });
+            });
+        }
+    }
+    </script>
+
+
+
+</script>
+
+</body>
+</html>
+
+
+
