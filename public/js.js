@@ -17,4 +17,8 @@ toTopBtn.onclick = function() {
 
 app.use(express.static(path.join(__dirname,"public")));
 
+//Script that uses "Lets talk" button  
+document.getElementById('scroll-to-bottom').addEventListener('click', function() {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+});
 
