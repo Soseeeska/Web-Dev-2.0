@@ -18,22 +18,25 @@
     <header>
         <h1>Hello, I am <span class="name">Mykhaylo</span></h1>
     </header>
-
+      <!-- About upper Section -->
     <section id="about">
         <div class="photo">
-            <img src="http://localhost/devsitev2.0/public/assets/testimonialsPhoto/1.jpeg" alt="Your Photo">
+            <img src="http://localhost/devsitev2.0/public/assets/DataScience.png" class="PersPhoto" alt="Your Photo">
         </div>
         <div class="about-details">
+             <!--Box 1: Experience -->
             <div class="info-box">
                 <img src="http://localhost/devsitev2.0/public/assets/Intro Stickers/experience.png" width="35" height="35" >
                 <h2 class="bold-text">Experience</h2>
                 <p>3+ Years Working</p>
             </div>
+              <!--Box 2: Clients -->
             <div class="info-box">
                 <img src="http://localhost/devsitev2.0/public/assets/Intro Stickers/Clients.png" width="35" height="35" >
                 <h2>Clients</h2>
                 <p>200+ Worldwide</p>
             </div>
+              <!--Box 3: Projects -->
             <div class="info-box">
                 <img src="http://localhost/devsitev2.0/public/assets/Intro Stickers/blueprint.png" width="35" height="35" >
                 <h2>Projects</h2>     
@@ -41,9 +44,14 @@
             </div>
             <p class="about-text">No work goes unnoticed. Each work presented in the portfolio is the result of long studies and efforts. If, after reviewing this business card site, you have any suggestions or questions, do not hesitate to write to me.</p>
             <button id="scroll-to-bottom" class="contact-button">Let's Talk</button>
+              <!--"Lets talk" and "Download CV" buttons  -->
+            <a href="http://localhost/devsitev2.0/public/assets/cv.pdf" download="CV">
+                <button  class="contact-button">Download CV</button>
+            </a>
+
         </div>
     </section>
-
+     <!-- My Experience section -->
     <section id="experience">
         <h2>My Experience</h2>
         <div class="container-grid-exp">
@@ -71,19 +79,28 @@
         </div>
     </section>
     
+    <!--Personal Portfolio section  -->
 
-    <section  class="portfolio">
+  <section  class="portfolio">
         <h2>Portfolio</h2>
+    
+    <div class="row">
+
+        <!-- Portfolio Dashboard -->
         <div class="portfolio-item">
             <h3>Dashboard</h3>
             <div class="flex-container">
                 <img src="http://localhost/devsitev2.0/public/assets/portfolio1.jpg" type="img" alt="Dashboard" class="center">
                 <p class="left">Crypto Currency Dashboard & Financial Visualisation</p>
-            </div>
+            </div>     
                 <canvas id="myChart1" ></canvas>
-                <button class="contact-button" onclick="location.href='https:/github.com/dashboard'">GitHub</button>
-                <button class="contact-button" href="demo-link" target="_blank">Demo</button>
+                <div>
+                    <button class="contact-button" onclick="location.href='https:/github.com/dashboard'">GitHub</button>
+                    <button class="contact-button" href="demo-link" target="_blank">Demo</button>
+                </div>
         </div>
+        <!-- Portfolio Chart Templates-->
+
         <div class="portfolio-item">
             <h3>Chart Templates</h3>
             <div class="flex-container">
@@ -91,9 +108,13 @@
                 <p class="left">Charts templates & infographics in Figma</p>
             </div>
             <canvas id="myChart2"></canvas>
-            <button class="contact-button" onclick="location.href='https:/github.com/dashboard'" >GitHub</button>
-            <button class="contact-button" href="demo-link" target="_blank">Demo</button>
+            <div>
+                <button class="contact-button" onclick="location.href='https:/github.com/dashboard'" >GitHub</button>
+                <button class="contact-button" href="demo-link" target="_blank">Demo</button>
+            </div>
         </div>
+        <!-- Portfolio Figma Dashboard-->
+
         <div class="portfolio-item">
             <h3>Figma Dashboard</h3>
             <div class="flex-container">
@@ -101,12 +122,16 @@
                 <p class="left">Digital task management system</p>
             </div>
             <canvas id="myChart3"></canvas>
-            <button class="contact-button" onclick="location.href='https:/github.com/dashboard'">GitHub</button>
-            <button class="contact-button" href="demo-link" target="_blank">Demo</button>
+            <div>
+                <button class="contact-button" onclick="location.href='https:/github.com/dashboard'">GitHub</button>
+                <button class="contact-button" href="demo-link" target="_blank">Demo</button>
+            </div>
             
         </div>
-    </section>
+    </div>
+ </section>
 
+     <!-- Dynamic Testimonials section-->
     <section id="testimonial">
         <h2>Testimonials</h2>
         <div class="scroller" data-direction="left" data-speed="slow">
@@ -119,23 +144,27 @@
        
     </section>
 
+    <!-- Contact Me section-->
+
     <section id="contact">
         <h2>Contact Me</h2>
         
        
         <div class="flex-containerContact">
             <div class="containerContactMe">
+                <!-- WhatsApp-->
                 <div class="contact-methods">
                     <img src="http://localhost/devsitev2.0/public/assets/phone.png" width="40" height="40" alt="ContactPhoto">
                      <p>WhatsApp:<br>+2044920402</p>
                 </div>
+                <!-- Location-->
                 <div class="contact-methods">
                      <img src="http://localhost/devsitev2.0/public/assets/circle.png" width="40" height="40" alt="ContactPhoto">
                      <p>Location:<br>Kalin str. 14, Cologne, Germany </p>
 
                 </div>
             </div>
-            
+            <!-- Send Email form-->
             <form action="/send-email" method="post"  class="ContactForm">
                 <input class="input" type="text" name="fullname" placeholder="Full Name" required>
                 <input class="input" type="email" name="email" placeholder="E-mail" required>
@@ -155,24 +184,26 @@
     <script src="/js.js" type="text/js"></script>
 
     <script>
-        //Script that uses "Lets talk" button  
+        //Script that uses "Lets talk" button  and scroll to the buttom of the web site.
         document.getElementById('scroll-to-bottom').addEventListener('click', function() {
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         });
-        </script>
+    </script>
    
 
     <!--for creating line chart for dashboard project using chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!--Portfolio charts location-->
-    <script src="http://localhost/devsitev2.0/chart1.js"></script>
-    <script src="http://localhost/devsitev2.0/chart2.js"></script>
-    <script src="http://localhost/devsitev2.0/chart3.js"></script>
+    <script src="http://localhost/devsitev2.0/Charts/chart1.js"></script>
+    <script src="http://localhost/devsitev2.0/Charts/chart2.js"></script>
+    <script src="http://localhost/devsitev2.0/Charts/chart3.js"></script>
     <!--to the top button location-->
     <script src="http://localhost/devsitev2.0/Top button.js"></script>
     <!--Testimonials adjustment and animation script loaction-->
     <script src="http://localhost/devsitev2.0/Test_Anim.js"></script>
+
+
     
 
 
@@ -180,6 +211,3 @@
 
 </body>
 </html>
-
-
-

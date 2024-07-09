@@ -94,10 +94,11 @@ p, ul {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 #about .photo img {
-    width: 200px;
     border-radius: 10px;
 }
 
@@ -111,11 +112,19 @@ p, ul {
     border-radius: 10px;
     margin-left: 20%;
     margin-right: 20%;
-    height: 10%;
     padding: 20px;
-    margin: 60px;
-    max-width: 800px;
+    margin: 20px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     transition: background-color 0.3s;
+}
+
+.portfolio-item:hover {
+    background-color: #07070c;
+    border: 2px solid #073a54;
+    
 }
 
 .container-grid-exp {
@@ -213,8 +222,7 @@ p, ul {
 }
 
 
-.info-box:hover, .experience-box:hover, 
-.portfolio-item:hover, .testimonial-item:hover, 
+.info-box:hover, .experience-box:hover, .testimonial-item:hover, 
 .contact-methods div:hover, .center:hover {
     background-color: #245c79;
     border: 2px solid #126d9b;
@@ -383,6 +391,19 @@ form button:hover {
     display:none;
 }
 
+
+.row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+.PersPhoto{
+    max-width: 400px;
+    max-height: 400px;
+}
+
 @media (min-width: 768px) {
     .testimonialItem.duplicate {
         display: block;
@@ -439,6 +460,5 @@ form button:hover {
       transform: translateX(calc(-50% - 0.5rem));
     }
   }
-
 
   
