@@ -1,27 +1,27 @@
 @font-face {
     font-family: 'Montserrat';
-    src: url('http://localhost/devsitev2.0/Font/Montserrat-Regular.woff') format('woff');
+    src: url('/Font/Montserrat-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Montserrat';
-    src: url('http://localhost/devsitev2.0/Fonts/Montserrat-Medium.woff') format('woff');
+    src: url('/Font/Montserrat-Medium.woff') format('woff');
     font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Montserrat';
-    src: url('http://localhost/devsitev2.0/Font/Montserrat-SemiBold.woff') format('woff');
+    src: url('/Font/Montserrat-SemiBold.woff') format('woff');
     font-weight: 600;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Montserrat';
-    src: url('http://localhost/devsitev2.0/Font/Montserrat-Bold.woff') format('woff');
+    src: url('/Font/Montserrat-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
 }
@@ -378,7 +378,7 @@ form button:hover {
     margin: 15px;
     border-radius: 10px;
     transition: background-color 0.3s;
-    width: 300px;
+    min-width: 300px;
     display: flex;
     align-items: center;
     flex-direction: column;

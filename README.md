@@ -6,7 +6,7 @@ Install Node.js
 // npm install express
 // npm install body-parser
 // npm install chart.js
-
+//  npm install mysql nodemon cors 
 
 1. download Xammp to manage database and its content 
 To make sure all pathes are correct move project folder with all code to the XAMPP/htdocs.
