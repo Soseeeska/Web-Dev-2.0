@@ -1,0 +1,464 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/Font/Montserrat-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/Font/Montserrat-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/Font/Montserrat-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/Font/Montserrat-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+.bold-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+.medium-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+.semibold-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: normal;
+    color: lightgray;
+    margin: 0;
+    padding: 0;
+    background-color: #0b141c; 
+}
+
+header {
+    text-align: center;
+    padding: 50px 0;
+    background-color: #1e1e1e;
+}
+
+header .name {
+    color: #00aaff;
+}
+
+section {
+    padding: 50px;
+    text-align: center;
+}
+
+h2  {
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+h3 {
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
+}
+
+li {
+    font-size: 15px;
+    
+}
+
+p, ul {
+    text-align: left;
+}
+
+#about {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#about .photo img {
+    border-radius: 10px;
+}
+
+#about .about-details {
+    max-width: 600px;
+}
+.portfolio-item
+{
+    background-color: transparent;
+    border: 2px solid #00aaff;
+    border-radius: 10px;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 20px;
+    margin: 20px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: background-color 0.3s;
+}
+
+.portfolio-item:hover {
+    background-color: #07070c;
+    border: 2px solid #073a54;
+    
+}
+
+.container-grid-exp {
+    display: grid;
+    gap: 1rem;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-auto-rows: flex;
+}
+
+.experience-box {
+    background-color: #1d1f33;
+    border-radius: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.experience-box h3 {
+    color: #00aaff;
+    margin-bottom: 1rem;
+}
+
+.experience-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.experience-box li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #292b4e;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.experience-box li:hover {
+    background-color: #343768;
+}
+
+.experience-box i {
+    margin-right: 10px;
+}
+
+.experience-box span {
+    color: #b0b0b0;
+    font-size: 0.9rem;
+}
+
+
+.flex-container {
+    display: flex;
+    max-width: 500px;
+    
+}
+.flex-containerContact {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: space-around;
+    justify-content: space-evenly;
+}
+
+.experience-box, .contact-methods div {
+    background-color: transparent;
+    border: 2px solid #00aaff;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.info-box{
+    background-color: transparent;
+    border: 2px solid #00aaff;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: fit-content;
+}
+
+
+.info-box:hover, .experience-box:hover, .testimonial-item:hover, 
+.contact-methods div:hover, .center:hover {
+    background-color: #245c79;
+    border: 2px solid #126d9b;
+    
+}
+
+.contact-button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #00aaff;
+    color: #fff;
+    border-color: #00aaff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-button:hover {
+    background-color: transparent;
+    color: #00aaff;
+    border: 2px solid #00aaff;
+    border-color: #00aaff;
+}
+
+.contact-methods  {
+    padding: 10px;
+    margin: 5px;
+    display: flex;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+form input, form textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 2px solid #00aaff;
+    background-color: transparent;
+    color: lightgray;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #00aaff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: transparent;
+    color: #00aaff;
+    border: 2px solid #00aaff;
+}
+
+
+.center {
+    float: left;
+  margin-left: 10pt;
+  margin-right: 10pt;
+  width: 40%;
+  border: 2px solid #00aaff;
+    border-radius: 10px;
+    float: left;
+}
+
+.right{
+ text-align: right ;
+
+}
+
+.left{
+    text-align: left;
+}
+
+.submitclick {
+    align-self: flex-end;
+}
+
+.portfolio {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+#toTopBtn {
+    display: none; 
+    position: fixed; 
+    bottom: 20px; 
+    right: 30px; 
+    z-index: 99; 
+    border: none; 
+    outline: none; 
+    background-color: #00aaff;; 
+    color: white; 
+    cursor: pointer; 
+    padding: 15px; 
+    border-radius: 10px; 
+    font-size: 18px; 
+}
+
+#toTopBtn:hover {
+    background-color: #333; 
+}
+
+.ContactForm {
+
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
+    align-items: flex-end;
+    min-width: 400pt;
+    
+}
+.input{
+    width: 35%;
+}
+
+.containerContactMe{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+
+  .circular-image {
+    height: 90px;
+    width: 90px;
+    border-radius: 30%;
+    object-fit:cover; 
+
+    border: 2px solid #171141; 
+}
+
+.testimonialItem{
+    background-color: transparent;
+    border: 2px solid #00aaff;
+    padding: 5px;
+    margin: 15px;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    min-width: 300px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-around;
+}
+
+.testimonialItem.duplicate {
+    display:none;
+}
+
+
+.row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+.PersPhoto{
+    max-width: 400px;
+    max-height: 400px;
+}
+
+@media (min-width: 768px) {
+    .testimonialItem.duplicate {
+        display: block;
+    }
+
+}
+
+.scroller {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  .scroller__inner {
+    padding-block: 1rem;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1rem;
+  }
+  
+  .scroller[data-animated="true"] {
+    overflow: hidden;
+    -webkit-mask: linear-gradient(
+      90deg,
+      transparent,
+      white 20%,
+      white 80%,
+      transparent
+    );
+    mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+  }
+  
+  .scroller[data-animated="true"] .scroller__inner {
+    width: max-content;
+    flex-wrap: nowrap;
+    animation: scroll var(--_animation-duration, 40s)
+      var(--_animation-direction, forwards) linear infinite;
+  }
+  
+  .scroller[data-direction="right"] {
+    --_animation-direction: reverse;
+  }
+  
+  .scroller[data-direction="left"] {
+    --_animation-direction: forwards;
+  }
+  
+  
+  .scroller[data-speed="slow"] {
+    --_animation-duration: 60s;
+  }
+  
+  @keyframes scroll {
+    to {
+      transform: translateX(calc(-50% - 0.5rem));
+    }
+  }
+
+  
