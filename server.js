@@ -2,6 +2,8 @@
 const express = require('express'); 
 const app = express();
 const helmet = require('helmet');
+// Use helmet for security
+app.use(helmet());
 const bodyParser = require('body-parser'); // Import body-parser 
 const nodemailer = require('nodemailer'); // Import nodemailer for sending emails
 const path = require('path'); // Import path for handling file paths
@@ -98,36 +100,12 @@ app.get("/testimonials", (req, res) => {
 
 
 
-// Use helmet for security
-app.use(helmet());
-
-// Parse JSON bodies
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-// Create MySQL connection
-const conn = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'mydb'
-});
-
-// Connect to the database
-conn.connect(err => {
-    if (err) {
-        console.error('Error connecting to MySQL database: ' + err.stack);
-        return;
-    }
-    console.log('Connected to MySQL database as id ' + conn.threadId);
-});
-
 // Handle project request submissions
 app.post('/submit-request', (req, res) => {
     const { requestType, comment } = req.body;
 
     const sql = 'INSERT INTO project_requests (request_type, comment) VALUES (?, ?)';
-    conn.query(sql, [requestType, comment], (err, result) => {
+    connection.query(sql, [requestType, comment], (err, result) => {
         if (err) {
             console.error('Error inserting request into database: ' + err.stack);
             return res.status(500).send('Error inserting request into database');
@@ -139,7 +117,7 @@ app.post('/submit-request', (req, res) => {
 // Get the count of project requests
 app.get('/request-count', (req, res) => {
     const sql = 'SELECT COUNT(*) AS count FROM project_requests';
-    conn.query(sql, (err, result) => {
+    connection.query(sql, (err, result) => {
         if (err) {
             console.error('Error fetching request count from database: ' + err.stack);
             return res.status(500).send('Error fetching request count from database');

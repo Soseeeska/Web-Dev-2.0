@@ -1,12 +1,7 @@
 
 Install Node.js
 
-// npm install recharts 
-// npm install nodemailer 
-// npm install express
-// npm install body-parser
-// npm install chart.js
-//  npm install mysql nodemon cors 
+// npm install 
 
 1. download Xammp to manage database and its content 
 
@@ -45,7 +40,7 @@ INSERT INTO testimonials (name, content, date, image) VALUES
 ('Ivy Jones', 'Fantastic service and great value.', '2024-10-01', '/assets/testimonialsPhoto/10.jpeg');
 
 
-Creating Table Project Requests
+Creating Table Project Requests to handle requests
 
 CREATE TABLE project_requests (
     id INT AUTO_INCREMENT PRIMARY KEY,
