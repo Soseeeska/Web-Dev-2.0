@@ -45,6 +45,17 @@ INSERT INTO testimonials (name, content, date, image) VALUES
 ('Ivy Jones', 'Fantastic service and great value.', '2024-10-01', '/assets/testimonialsPhoto/10.jpeg');
 
 
+Creating Table Project Requests
+
+CREATE TABLE project_requests (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    request_type VARCHAR(50),
+    comment TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
 1. To run web app go to localhost3000 in your web browser. 
    
 

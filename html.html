@@ -144,6 +144,27 @@
        
     </section>
 
+
+    <section id="project-request" class="request-item">
+        <h2>Make a Request</h2>
+        <p>Hey, if you already have an idea what type of project do you desire to create, you can leave a request here, and i will response to you as soon as possible.</p>
+        <form id="requestForm" class="requestform">
+            <label for="requestType" class="semibold-text">Request Type:</label>
+            <select id="requestType" name="requestType" class="contact-button">
+                <option value="Frontend">Frontend</option>
+                <option value="Backend">Backend</option>
+                <option value="Full Stack">Full Stack</option>
+            </select>
+
+            <label for="comment" class="semibold-text" >Comment:</label>
+            <textarea id="comment" name="comment" placeholder="Add your comment here..." style="width: 30%; height: 25%;"></textarea>
+
+            <button type="/submit-request" class="contact-button">Submit</button>
+        </form>
+
+        <h3>Number of Requests: &nbsp <span id="requestCount">0</span></h3>
+    </section>
+
     <!-- Contact Me section-->
 
     <section id="contact">
@@ -188,20 +209,9 @@
 
 
 <body>
-    <script src="public/js.js" type="text/js"></script>
-    <script src="server.js" type="text/js"></script>
-     <!--for creating line chart for dashboard project using chart.js CDN -->
-     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-     <!--Portfolio charts location-->
-     <script src="/Users/misha/Desktop/Code/devsitev2.0/Charts/chart1.js" type="text/js"></script>
-     <script src="Charts/chart2.js" type="text/js"></script>
-     <script src="public/Charts/chart3.js" type="text/js"></script>
-     <!--to the top button location-->
-     <script src="/Top button.js" type="text/js"></script>
-     <!--Testimonials adjustment and animation script loaction-->
-     <script src="/Test_Anim.js" type="text/js"></script>
- 
+    <!--for creating line chart for dashboard project using chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
         //Script that uses "Lets talk" button  and scroll to the buttom of the web site.
@@ -209,6 +219,59 @@
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         });
     </script>
+
+    <!--Request -->
+     <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const requestForm = document.getElementById('requestForm');
+    const requestCountElement = document.getElementById('requestCount');
+
+    // Fetch the request count on page load
+    fetch('/request-count')
+        .then(response => response.json())
+        .then(data => {
+            requestCountElement.textContent = data.count;
+        })
+        .catch(error => console.error('Error fetching request count:', error));
+
+    // Handle form submission
+    requestForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const requestType = document.getElementById('requestType').value;
+        const comment = document.getElementById('comment').value;
+
+        const requestData = { requestType, comment };
+
+        fetch('/submit-request', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestData)
+        })
+        .then(response => response.text())
+        .then(data => {
+            alert('Request submitted successfully');
+            // Update the request count
+            fetch('/request-count')
+                .then(response => response.json())
+                .then(data => {
+                    requestCountElement.textContent = data.count;
+                })
+                .catch(error => console.error('Error fetching request count:', error));
+        })
+        .catch(error => {
+            console.error('Error submitting request:', error);
+            alert('Error submitting request');
+        });
+    });
+});
+
+    </script>
+
+
+
 
 <!--Testimonial Animation script-->
     <script>
