@@ -9,12 +9,14 @@ const nodemailer = require('nodemailer'); // Import nodemailer for sending email
 const path = require('path'); // Import path for handling file paths
 // Initialize the Express application
 
+app.use(bodyParser.json());
+
 app.use(
   helmet.contentSecurityPolicy({
       directives: {
           defaultSrc: ["'self'"],
           scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", 'https://cdn.jsdelivr.net'],
-          scriptSrcAttr: ["'self'", "'unsafe-inline'"],
+          scriptSrcAttr: ["'unsafe-inline'"], 
           scriptSrcElem: ["'self'", "'unsafe-inline'", 'https://cdn.jsdelivr.net'],
           styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
           fontSrc: ["'self'", 'https://fonts.gstatic.com'],
@@ -25,6 +27,7 @@ app.use(
       }
   })
 );
+
 
 
 const port = 3000; // Define the port number
