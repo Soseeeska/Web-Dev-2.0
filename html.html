@@ -7,10 +7,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
-    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <style>
         @import url('grid base.css');
-        @import url('/grid.css');
+        @import url('grid.css');
        
     </style>
 </head>
@@ -95,7 +95,7 @@
             </div>     
                 <canvas id="myChart1" ></canvas>
                 <div>
-                    <button class="contact-button" onclick="location.href='https:/github.com/dashboard'">GitHub</button>
+                    <button class="contact-button" onclick=" window.open('https:/github.com/dashboard','_blank')">GitHub</button>
                     <button class="contact-button" href="demo-link" target="_blank">Demo</button>
                 </div>
         </div>
@@ -109,7 +109,7 @@
             </div>
             <canvas id="myChart2"></canvas>
             <div>
-                <button class="contact-button" onclick="location.href='https:/github.com/dashboard'" >GitHub</button>
+                <button class="contact-button" onclick=" window.open('https:/github.com/dashboard','_blank')" >GitHub</button>
                 <button class="contact-button" href="demo-link" target="_blank">Demo</button>
             </div>
         </div>
@@ -123,7 +123,7 @@
             </div>
             <canvas id="myChart3"></canvas>
             <div>
-                <button class="contact-button" onclick="location.href='https:/github.com/dashboard'">GitHub</button>
+                <button class="contact-button" onclick=" window.open('https:/github.com/dashboard','_blank')">GitHub</button>
                 <button class="contact-button" href="demo-link" target="_blank">Demo</button>
             </div>
             
@@ -143,6 +143,29 @@
         </div>
        
     </section>
+
+
+<section id="project-request">
+    <div class="request-item">
+        <h2>Make a Request</h2>
+        <p>Hey, if you already have an idea what type of project do you desire to create, you can leave a request here, and i will response to you as soon as possible.</p>
+        <form id="requestForm" class="requestform">
+            <label for="requestType" class="semibold-text">Request Type:</label>
+            <select id="requestType" name="requestType" class="contact-button">
+                <option value="Frontend">Frontend</option>
+                <option value="Backend">Backend</option>
+                <option value="Full Stack">Full Stack</option>
+            </select>
+
+            <label for="comment" class="semibold-text" >Comment:</label>
+            <textarea id="comment" name="comment" placeholder="Add your comment here..." style="width: 30%; height: 25%;"></textarea>
+
+            <button type="/submit-request" class="contact-button">Submit</button>
+        </form>
+
+        <h3>Number of Requests: &nbsp <span id="requestCount">0</span></h3>
+    </div>
+ </section>
 
     <!-- Contact Me section-->
 
@@ -188,20 +211,8 @@
 
 
 <body>
-    <script src="public/js.js" type="text/js"></script>
-    <script src="server.js" type="text/js"></script>
-     <!--for creating line chart for dashboard project using chart.js CDN -->
-     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-     <!--Portfolio charts location-->
-     <script src="/Users/misha/Desktop/Code/devsitev2.0/Charts/chart1.js" type="text/js"></script>
-     <script src="Charts/chart2.js" type="text/js"></script>
-     <script src="public/Charts/chart3.js" type="text/js"></script>
-     <!--to the top button location-->
-     <script src="/Top button.js" type="text/js"></script>
-     <!--Testimonials adjustment and animation script loaction-->
-     <script src="/Test_Anim.js" type="text/js"></script>
- 
+    <!--for creating line chart for dashboard project using chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
         //Script that uses "Lets talk" button  and scroll to the buttom of the web site.
@@ -209,6 +220,65 @@
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         });
     </script>
+
+    <!--Request -->
+     <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const requestForm = document.getElementById('requestForm');
+    const requestCountElement = document.getElementById('requestCount');
+
+    // Fetch the request count on page load
+    fetch('/request-count')
+        .then(response => response.json())
+        .then(data => {
+            requestCountElement.textContent = data.count;
+        })
+        .catch(error => console.error('Error fetching request count:', error));
+
+    // Handle form submission
+    requestForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const requestType = document.getElementById('requestType').value;
+        const comment = document.getElementById('comment').value;
+
+        // Ensures fields are not empty
+        if (!requestType || requestType === '' || !comment || comment.trim() === '') {
+            alert('Please fill the form.');
+            return;
+        }
+
+        const requestData = { requestType, comment };
+
+        fetch('/submit-request', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestData)
+        })
+        .then(response => response.text())
+        .then(data => {
+            alert('Request submitted successfully');
+            // Update the request count
+            fetch('/request-count')
+                .then(response => response.json())
+                .then(data => {
+                    requestCountElement.textContent = data.count;
+                })
+                .catch(error => console.error('Error fetching request count:', error));
+        })
+        .catch(error => {
+            console.error('Error submitting request:', error);
+            alert('Error submitting request');
+        });
+    });
+});
+
+    </script>
+
+
+
 
 <!--Testimonial Animation script-->
     <script>
@@ -245,7 +315,7 @@
         .catch(error => console.error('Error fetching testimonials:', error));
 });
 
-// Get all elements with the class "scroller"
+// Get all elements with the class scroller
 const scrollers = document.querySelectorAll(".scroller");
 
 // Function to add animation to scrollers
@@ -290,7 +360,6 @@ toTopBtn.onclick = function() {
     document.documentElement.scrollTop = 0;
 };
 
-app.use(express.static(path.join(__dirname,"public")));
 
 //Script that uses "Lets talk" button  
 document.getElementById('scroll-to-bottom').addEventListener('click', function() {
@@ -464,31 +533,6 @@ const chart3 = document.getElementById('myChart3');
           },
         });
     </script>
-
-<!--To The Top Button-->
-<script>
-    // Get the button
-let toTopBtn = document.getElementById("toTopBtn");
-
-// When you scroll down 20px from the top, it shows the button
-window.onscroll = function() {
-    scrollFunction();
-};
-
-function scrollFunction() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        toTopBtn.style.display = "block";
-    } else {
-        toTopBtn.style.display = "none";
-    }
-}
-
-// When the user clicks on the button, scroll to the top of the document
-toTopBtn.onclick = function() {
-    document.body.scrollTop = 0; 
-    document.documentElement.scrollTop = 0; 
-};
-</script>
 
 
 

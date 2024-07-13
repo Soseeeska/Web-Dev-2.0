@@ -2,10 +2,29 @@
 const express = require('express'); 
 const app = express();
 const helmet = require('helmet');
+// Use helmet for security
+app.use(helmet());
 const bodyParser = require('body-parser'); // Import body-parser 
 const nodemailer = require('nodemailer'); // Import nodemailer for sending emails
 const path = require('path'); // Import path for handling file paths
 // Initialize the Express application
+
+app.use(
+  helmet.contentSecurityPolicy({
+      directives: {
+          defaultSrc: ["'self'"],
+          scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", 'https://cdn.jsdelivr.net'],
+          scriptSrcAttr: ["'self'", "'unsafe-inline'"],
+          scriptSrcElem: ["'self'", "'unsafe-inline'", 'https://cdn.jsdelivr.net'],
+          styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
+          fontSrc: ["'self'", 'https://fonts.gstatic.com'],
+          imgSrc: ["'self'", 'data:'],
+          connectSrc: ["'self'"],
+          objectSrc: ["'none'"],
+          upgradeInsecureRequests: []
+      }
+  })
+);
 
 
 const port = 3000; // Define the port number
@@ -95,3 +114,32 @@ app.get("/testimonials", (req, res) => {
         res.json(results); // Send the fetched testimonials as JSON
     });
 });
+
+
+
+// Handle project request submissions
+app.post('/submit-request', (req, res) => {
+    const { requestType, comment } = req.body;
+
+    const sql = 'INSERT INTO project_requests (request_type, comment) VALUES (?, ?)';
+    connection.query(sql, [requestType, comment], (err, result) => {
+        if (err) {
+            console.error('Error inserting request into database: ' + err.stack);
+            return res.status(500).send('Error inserting request into database');
+        }
+        res.status(200).send('Request submitted successfully');
+    });
+});
+
+// Get the count of project requests
+app.get('/request-count', (req, res) => {
+    const sql = 'SELECT COUNT(*) AS count FROM project_requests';
+    connection.query(sql, (err, result) => {
+        if (err) {
+            console.error('Error fetching request count from database: ' + err.stack);
+            return res.status(500).send('Error fetching request count from database');
+        }
+        res.status(200).json(result[0]);
+    });
+});
+
