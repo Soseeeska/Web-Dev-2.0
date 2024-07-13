@@ -9,6 +9,23 @@ const nodemailer = require('nodemailer'); // Import nodemailer for sending email
 const path = require('path'); // Import path for handling file paths
 // Initialize the Express application
 
+app.use(
+  helmet.contentSecurityPolicy({
+      directives: {
+          defaultSrc: ["'self'"],
+          scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", 'https://cdn.jsdelivr.net'],
+          scriptSrcAttr: ["'self'", "'unsafe-inline'"],
+          scriptSrcElem: ["'self'", "'unsafe-inline'", 'https://cdn.jsdelivr.net'],
+          styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
+          fontSrc: ["'self'", 'https://fonts.gstatic.com'],
+          imgSrc: ["'self'", 'data:'],
+          connectSrc: ["'self'"],
+          objectSrc: ["'none'"],
+          upgradeInsecureRequests: []
+      }
+  })
+);
+
 
 const port = 3000; // Define the port number
 // Serve static files from the "public" directory
